@@ -111,7 +111,7 @@ top_p = top_p if 'top_p' in locals() else 0.95
 # ----------------------------------------
 #  Step 1: Job description input
 # ----------------------------------------
-st.title("🧠 AI Job Interviewer")
+st.title("🧠 The Mean Interviewer")
 
 st.subheader("Step 1: Paste a Job Description")
 job_description_input = st.text_area("Paste the job description here", height=400)
