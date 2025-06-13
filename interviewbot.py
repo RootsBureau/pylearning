@@ -4,7 +4,7 @@ import time
 import json
 from pathlib import Path
 
-from templates.prompt_template import get_system_prompt, get_feedback_prompt
+from templates.prompt_template import get_system_prompt, get_feedback_prompt, get_system_prompt_fewshot_mean
 
 # Create a directory for logs/debug outputs (optional)
 Path("debug_logs").mkdir(exist_ok=True)
@@ -123,7 +123,7 @@ if st.button("Start Interview"):
         # Save job description
         st.session_state.job_description = job_description_input
         st.session_state.interview_started = True
-        st.session_state.messages = [{"role": "system", "content": get_system_prompt(job_description_input)}]
+        st.session_state.messages = [{"role": "system", "content": get_system_prompt_fewshot_mean(job_description_input)}]
         st.session_state.questions = []
         st.session_state.current_question_index = 0
         st.session_state.awaiting_answer = False
@@ -212,7 +212,9 @@ if st.session_state.awaiting_answer:
             st.session_state.messages.append({"role": "assistant", "content": full_response})
             st.session_state.feedbacks.append(full_response)   
 
-            #st.session_state.ready_for_next = True  # Wait for user trigger        
+            #st.session_state.ready_for_next = True  # Wait for user trigger
+            st.session_state.awaiting_answer = False
+            st.session_state.ready_for_next = True       
 
             # Show "Next Question" button if feedback has been given
             if st.session_state.ready_for_next and st.session_state.current_question_index < len(st.session_state.questions) - 1:
