@@ -69,7 +69,7 @@ with st.sidebar:
         st.subheader("Settings")
         model = st.selectbox(
             "Select Model",
-            options=["gpt-3.5-turbo", "gpt-4", "o4-mini", "ChatGPT-4o"],
+            options=["gpt-3.5-turbo", "GPT-4 Turbo", "GPT-4.1 mini", "gpt-4"],
             index=0,
             help="Choose the model you want to use for the chatbot."
         )
