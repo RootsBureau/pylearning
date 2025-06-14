@@ -4,4 +4,3 @@ requests==2.25.1
 numpy==2.3.0
 pandas==2.3.0
 openai>0.27.0
-imghdr
